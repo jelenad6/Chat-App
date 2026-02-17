@@ -14,7 +14,7 @@ public class ChatPacket implements Serializable {
     public String text;
 
     // Ciljevi (DM/MCAST)
-    public String[] to;     // za DM: [user], za MCAST: lista korisnika, za PUBLIC: null
+    public String[] to;     // za DM: user, za MCAST: lista korisnika, za PUBLIC: null
 
     // ID i vreme
     public long id;         // dodeljuje server za nove poruke
@@ -77,3 +77,4 @@ public class ChatPacket implements Serializable {
         return p;
     }
 }
+
