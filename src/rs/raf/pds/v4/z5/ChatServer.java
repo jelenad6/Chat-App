@@ -63,7 +63,7 @@ public class ChatServer implements Runnable {
                     return;
                 }
 
-                // Staro (ostavljeno radi kompatibilnosti)
+               
                 if (object instanceof ChatMessage) {
                     ChatMessage chatMessage = (ChatMessage) object;
                     System.out.println(chatMessage.getUser() + ":" + chatMessage.getTxt());
@@ -87,13 +87,10 @@ public class ChatServer implements Runnable {
         });
     }
 
-    // =========================
-    // ChatPacket logika
-    // =========================
 
     private void handleChatPacket(ChatPacket p, Connection connection) {
         String sender = connectionUserMap.get(connection);
-        if (sender == null) return; // nije logovan
+        if (sender == null) return; 
 
         // server uvek postavlja from
         p.from = sender;
@@ -108,7 +105,7 @@ public class ChatServer implements Runnable {
         p.timestamp = System.currentTimeMillis();
         p.edited = false;
 
-        // reply preview (ako je reply)
+      
         if (p.replyToId > 0) {
             ChatPacket original = messageById.get(p.replyToId);
             if (original != null) {
@@ -234,9 +231,7 @@ public class ChatServer implements Runnable {
         return c;
     }
 
-    // =========================
-    // Postojeci kod
-    // =========================
+  
 
     String[] getAllUsers() {
         String[] users = new String[userConnectionMap.size()];
@@ -331,3 +326,4 @@ public class ChatServer implements Runnable {
         }
     }
 }
+
